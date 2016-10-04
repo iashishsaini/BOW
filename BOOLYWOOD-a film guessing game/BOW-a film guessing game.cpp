@@ -1,189 +1,14 @@
 /*!
-/brief BOW-a film guessing agme
+/brief BOW-a film guessing game
 This is the classic film guessing game which all you have enjoyed playing at free time. I have only ported it to computer based game.
 Why have I created it?
-Becase I want to.
+Because I want to.
 Hope you like it
 */
 
 #include "stdafx.h"
 #include "BOW-a film guessing game.h"
-#include<fstream>
-#include<iostream>
-#include<time.h>
-#include<CommCtrl.h>
-#include <windows.h>
-#include <objidl.h>
-#include <gdiplus.h>
-using namespace Gdiplus;
-#pragma comment (lib,"Gdiplus.lib")
-#include"c/bass.h"
-#include<Shellapi.h>
 using namespace std;
-// preprocess directives for different in game usages 
-#define MAX_LOADSTRING					100
-#define CHAR_NOTFOUND					300
-#define CHAR_REPEATED					1
-#define CHAR_VOWELORSPACE				2
-#define GAME_OUTOFLIVES					3
-#define	CHAR_FOUND						4
-#define ONE_PLAYER_PLAY					5
-#define TWO_PLAYER_PLAY					6
-#define GAME_OVERFORONEPLAYERPLAY		7
-#define	GAME_OVERFORTWOPLAYERPLAY		8
-#define GAME_PLAYER1ONETIMEWON			9
-#define GAME_PLAYER2ONETIMEWON			10
-#define	GAME_PLAYING					11
-#define	GAME_PAUSE						12
-#define GAME_HALTFORUSERINPUT			13
-#define SCREEN_PLAY						14
-#define SCREEN_RESULTS					15
-#define SCREEN_INITIAL					16
-#define PLAYER1							17
-#define PLAYER2							18
-#define GENRE							19
-#define DATE							20
-#define GENRE_INDEX						21
-#define GENRE_CURRENT_INDEX				22
-#define SCREEN_OPTIONS					23
-#define OPTIONS_SOUNDS					24
-#define OPTIONS_THEMES					25
-#define OPTIONS_UPDATES					26
-#define FOCUS_SOUNDS					27
-#define FOCUS_THEMES					28
-#define FOCUS_UPDATES					29
-#define BGMusic1						L"DATA/Sounds/Background Music/Stealth Groover.mp3"
-#define BGMusic2						L"DATA/Sounds/Background Music/Gonna Start.mp3"
-#define BGMusic3						L"DATA/Sounds/Background Music/Firmament.mp3"
-#define BGMusic4						L"DATA/Sounds/Background Music/Ice Flow.mp3"
-#define BGMusic5						L"DATA/Sounds/Background Music/Ouroboros.mp3"
-#define BGMusic6						L"DATA/Sounds/Background Music/Hustle.mp3"
-#define BGMusic7						L"DATA/Sounds/Background Music/Matts Blues.mp3"
-ULONG_PTR m_gdiplusToken;/**Belong to GDI+*/
-HDC PerBGHdc, TempBGHdc;/**Belong to GDI+*/ HBITMAP PerBGBitmap/**Belong to GDI+*/, TempBGBitmap/**Belong to GDI+*/; BOOL one = FALSE;
-// Global Variables:
-HINSTANCE hInst;								// current instance
-TCHAR szTitle[MAX_LOADSTRING] = L"BOW - a film guessing game";					/**Stores the title of the program*/
-TCHAR szWindowClass[MAX_LOADSTRING]=L"MainWindowClass";			/**the main window class name*/
-HWND StaticTextHandle;									//Handle for static text
-const UINT MAX_FILMS = 2000; BOOL IsDialogOk = FALSE;
-TCHAR  szBollywood[11] = { L"BOLLYWOOD" } /**Store word which should be cut during game play*/, KeyStrokesSaver[50]/**Save the keystrokes inputed by keyboard during gameplay.*/, szFilmWithBlanks[50]/**Holding for film names having blanks for filling*/, szFirstPlayerName[30]/**Stores Name of the first player.*/, szSecondPlayerName[30]/**Stores the name of second player*/, szFilmNames[MAX_FILMS][50]/**Stores all the films names available.*/, szFilmReleaseDate[MAX_FILMS][10]/**Stores realease date of all the films available.*/, szFilmMainCast[MAX_FILMS][100]/**Stores the main cast of films available.*/, szFilmWikiLinks[MAX_FILMS][100]/**Stores wikipedia links of films if available or NA if not*/, szFilmImdbLinks[MAX_FILMS][100]/**Stores imdb links of films if available or NA if not*/, szFilmGenre[MAX_FILMS][100]/**Stores genre of all available films*/, szFilmDirector[MAX_FILMS][100]/**Stores director of all available films*/;
-UINT iMenuSound2=0,iMenuSound3=0,Invalidat, iDisplayCode/**Stores wheter the game is playing, pause or anything else.*/, iQuotesCode/**Stores which quote to show*/, iBowLifeCounter/**Count keeper for how many lives are over*/, total_films = 0, iFilmNumberChoosen/**Contains film choosen for current game.*/, checker[MAX_FILMS]/**Stores already taken films*/, initiali = 0/**For miscellaneous use*/, GameMode/**Stores wheter the game is Single Play or MultiPlay*/, MaxPlay/**Stores the max gameplays*/, iScreen = SCREEN_INITIAL/**Store the screen state like menu screen, playing screen*/;
-GdiplusStartupInput gdiplusStartupInput;/**For GDI+*/ HSTREAM quit/**Quit sound stream*/, uhuh/**uhuh sound stream*/, yeah/**Yeah sound stream*/, hang/**Hang sound stream*/, MenuClick/**MenuClick sound stream*/, BGMusic = NULL/**Background music sound stream sound stream*/; BOOL DebugMode = FALSE/**Debug information should be shown or not.*/, ShowHint = FALSE/**Hint should be shown or not.*/;
-int iFXLevel = 120,iVolumeLevel=120;
-double fVolumeLevel = 1.0/**Stores Game volume*/,fFXLevel=1.0/**Stores Background volume*/;
-TCHAR szWrongGuess[7][100] = { L"Bad Guessing",
-L"Use your brain not your finger tips"
-L"You are not good in guessing",
-L"Good luck next time",
-L"You have missed it",
-L"Oh! come on",
-L"Try again you ....",
-}/**Contains what should be shown when user guess wrong*/, szCorrectlyGuessedMovie[6][100] = {
-	L"You got that",
-	L"Well nice guess",
-	L"Nice guessing Huhn!",
-	L"Well done!",
-	L"Hurrayh!",
-	L"You have made it"
-}/**Contains what should be shown when user guess right*/,
-szNotGuessedTheMovie[6][100] = {
-		L"Shame on you... Just Kidding",
-		L"You are not good in guessing",
-		L"Better guess next time",
-		L"Oh! you are unable to guess this movie",
-		L"Nah! Na! Na! Na! Nah! Looser. Don't take it seriously",
-		L"What are you doing! Concentrate"
-}/**Contains what should be shown when user is unable to guess movie*/
-;
-	/*! \struct _GameStatus
-		Use to store in game status;
-	*/
-struct _GameStatus{
-	UINT PreviousMessage;/**Stores previously what's the status of the game is it paused, running, completed*/
-	UINT CurrentMessage=GAME_PAUSE;/**Stores currently what's the status of the game is it paused, running, completed*/
-	UINT TotalChances;
-	UINT Lives;/**Stores how many lives are left. For example in //////OOD three lives are left*/
-	UINT CurrentChances;
-	UINT CurentPlayer=PLAYER1;/**Stores who is the current player*/
-}GameStatus /**Working _GameStatus structure object*/;
-/*! \struct _score
-	Use to store score scored and hints available
-*/
-struct _score
-{
-	UINT score;
-	UINT hints;
-}player1/**score and hint storer for player1*/, player2/**score and hint storer for player2*/;
-/*! \struct _mousepos
-stores mouse position in current window used mainly for menu.
-*/
-struct _mousepos
-{
-	UINT x;
-	UINT y;
-	UINT PreviousX;
-	UINT PreviousY;
-	BOOL IsMouseDown = FALSE;
-	UINT InFocus = FOCUS_SOUNDS;
-}MousePosition/**working object of _mousepos*/;
-struct _subsortedData
-{
-	BOOL IsOsNot=FALSE;
-	UINT iGenre[MAX_FILMS];
-	UINT iNdexNumber = 0;
-};
-/*! /struct _sorteddata
-Stores all the sorted data which will be generated after sorting all data by genres
-*/
-struct _sorteddata
-{
-	BOOL SortData = FALSE;
-	UINT TotalEffectiveFilms = 0;
-	TCHAR GenresTemp[MAX_FILMS][100];
-	TCHAR Genres[MAX_FILMS][100];
-	TCHAR ReleaseDate[MAX_FILMS][100];
-	UINT GenreCurrentIndex[MAX_FILMS];
-	UINT ReleaseDateAccordingIndex[MAX_FILMS];
-	UINT TotalFilmsAfterSort=0;
-	UINT TotalReleaseDates;
-	_subsortedData Drama;
-	_subsortedData Family;
-	_subsortedData Thriller;
-	_subsortedData Comedy;
-	_subsortedData Action;
-	_subsortedData Romance;
-	_subsortedData Social;
-	_subsortedData Suspense;
-	_subsortedData Fantasy;
-	_subsortedData Children;
-	_subsortedData Adventure;
-	_subsortedData Crime;
-	_subsortedData Musical;
-	_subsortedData Animation;
-	_subsortedData Adult;
-	_subsortedData Biographical;
-	_subsortedData Historical;
-	_subsortedData Mythology;
-	_subsortedData Horror;
-	_subsortedData Sports;
-	_subsortedData Costume;
-	_subsortedData War;
-	_subsortedData Patriotic;
-	_subsortedData Science_Fiction;
-	_subsortedData Political;
-	_subsortedData Period;
-	_subsortedData Biopic;
-	_subsortedData Film_Noir;
-	_subsortedData Devotional;
-	_subsortedData Unknown;
-}SortedData/**Working object of _sorteddata*/;
-// Forward declarations of functions included in this code module:
-ATOM				MyRegisterClass(HINSTANCE hInstance);
-BOOL				InitInstance(HINSTANCE, int);
-LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK	NewGame(HWND, UINT, WPARAM, LPARAM);
 void GameControler();
 
 /*! \fn film_importer
@@ -237,7 +62,7 @@ void film_importer()
 			if (total_films > MAX_FILMS)
 			{
 				TCHAR tem[1000];
-				wsprintf(tem, L"Films are more than max limit i.e. %d \nBOW wil now terminate itself", MAX_FILMS);
+				wsprintf(tem, L"Films are more than max limit i.e. %d \nBOW will now terminate itself", MAX_FILMS);
 				MessageBox(NULL, tem, L"ERROR", MB_OK | MB_ICONERROR);
 				exit(0);
 			}
@@ -392,7 +217,7 @@ void film_importer()
 	return;
 }
 /*! \fn TotalEffectiveFilms()
-This funtion find out the total effective films after sorting according to genre
+This function find out the total effective films after sorting according to genre
 */
 int  TotalEffectiveFilms()
 {
@@ -1037,7 +862,7 @@ void DataResetter(BOOL GameIsOfTwoPlayers, BOOL GameIsOfOnePlayer, BOOL RessetTh
 	return;
 }
 /*! \fn GameControler()
-It control the core of game like calling diffrent functions to reset data or getting to result screen
+It control the core of game like calling different functions to reset data or getting to result screen
 */
 void GameControler()
 {
@@ -1062,7 +887,7 @@ void GameControler()
 	
 }
 /*! \fn APIENTRY _tWinMain(_In_ HINSTANCE hInstance,_In_opt_ HINSTANCE hPrevInstance,_In_ LPTSTR    lpCmdLine, _In_ int       nCmdShow)
-Its main entry point of win32 program. It intiliaze window title, icon and also have message loop for running the programe
+Its main entry point of win32 program. It initialize window title, icon and also have message loop for running the program
 */
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -1148,15 +973,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 /*! \fn WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-Processes messages for the main window. It is the heart of the programe, process all the inputs from user as well as internal inputs
+Processes messages for the main window. It is the heart of the program, process all the inputs from user as well as internal inputs
 WM_COMMAND	- process the application menu
 WM_PAINT	- Paint the main window
 WM_DESTROY	- post a quit message and return
 */
-
-
-//
-//
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
@@ -1171,16 +992,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
 					  film_importer();
 					  DataSorter(GENRE_INDEX);
-					  //Initialise Gdi+ to use graphic objects
+					  //Initialize Gdi+ to use graphic objects
 					  GdiplusStartup(&m_gdiplusToken, &gdiplusStartupInput, NULL);
-					  //Intialize bass to use sounds
+					  //Initialize bass to use sounds
 					  BASS_Init(-1, 44100, 0, hWnd, NULL);
 					  quit = BASS_StreamCreateFile(FALSE, L"DATA/Sounds/quit.wav", 0, 0, BASS_ASYNCFILE);
 					  uhuh = BASS_StreamCreateFile(FALSE, L"DATA/Sounds/uhuh.wav", 0, 0, BASS_ASYNCFILE );
 					  yeah = BASS_StreamCreateFile(FALSE, L"DATA/Sounds/yeah.wav", 0, 0, BASS_ASYNCFILE );
 					  hang = BASS_StreamCreateFile(FALSE, L"DATA/Sounds/hang.wav", 0, 0, BASS_ASYNCFILE );
 					  MenuClick = BASS_StreamCreateFile(FALSE, L"DATA/Sounds/Menu_click.wav", 0, 0, BASS_ASYNCFILE );
-					  //Fonts to use in different parts of programe
+					  //Fonts to use in different parts of program
 					  hdc = GetDC(hWnd);
 					  hFont = CreateFont(40, 11, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
 						  CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, TEXT("Mistral"));
@@ -1189,7 +1010,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					  hFontt = CreateFont(30, 8.5, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
 						  CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, TEXT("Mistral"));
 					  hFontu = CreateFont(40, 11, 0, 0, FW_DONTCARE, FALSE, TRUE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS, CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, TEXT("Mistral"));
-					  //Following code get the width and height of different fonts used in programe
+					  //Following code get the width and height of different fonts used in program
 					  SelectObject(hdc, hFont);
 					  GetTextMetrics(hdc, &tm);
 					  cxChar = tm.tmAveCharWidth;
@@ -1596,7 +1417,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					 SetBkMode(TempBGHdc, TRANSPARENT);
 					 SelectObject(TempBGHdc, hFont);
 					 // Initialize the color matrix.
-					 // Change the value in row 4, column 4 to change the tranperarancy.
+					 // Change the value in row 4, column 4 to change the transparency.
 					 ColorMatrix colorMatrix = {
 						 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
 						 0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
@@ -1822,7 +1643,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 						 if (GameMode == ONE_PLAYER_PLAY)
 						 {
 							 TextOut(TempBGHdc, 0.34*rect.right - ((lstrlen(L"The Game was of one player")*cxChar) / 2), 0.5*rect.bottom + (cyChar*-6), L"The Game was of one player", lstrlen(L"The Game was of one player"));
-							 int l = wsprintf(szBuffer, L"  you have scored %d ponits", player1.score);
+							 int l = wsprintf(szBuffer, L"  you have scored %d points", player1.score);
 							 SelectObject(TempBGHdc, hFontt);
 							 TextOut(TempBGHdc, 0.34*rect.right - (((lstrlen(szFirstPlayerName) + l)*cxChart) / 2), 0.5*rect.bottom + (cyChar*-4), szFirstPlayerName, lstrlen(szFirstPlayerName));
 							 TextOut(TempBGHdc, 0.34*rect.right - (((l - lstrlen(szFirstPlayerName))*cxChart) / 2), 0.5*rect.bottom + (cyChar*-4), szBuffer, l);
@@ -1836,7 +1657,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 						 if (GameMode == TWO_PLAYER_PLAY)
 						 {
 							 TextOut(TempBGHdc, 0.34*rect.right - ((lstrlen(L"The Game was of Two players")*cxChar) / 2), 0.5*rect.bottom + (cyChar*-6), L"The Game was of Two players", lstrlen(L"The Game was of Two players"));
-							 int l = wsprintf(szBuffer, L"  you have scored %d ponits", player1.score);
+							 int l = wsprintf(szBuffer, L"  you have scored %d points", player1.score);
 							 SelectObject(TempBGHdc, hFontt);
 							 TextOut(TempBGHdc, 0.34*rect.right - (((lstrlen(szFirstPlayerName) + l)*cxChart) / 2), 0.5*rect.bottom + (cyChar*-4), szFirstPlayerName, lstrlen(szFirstPlayerName));
 							 TextOut(TempBGHdc, 0.34*rect.right - (((l - lstrlen(szFirstPlayerName))*cxChart) / 2), 0.5*rect.bottom + (cyChar*-4), szBuffer, l);
@@ -1845,7 +1666,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 							 int percentage = (((float)player1.score) / ((float)MaxPlay/2)) * 100;
 							 l = wsprintf(szBuffer, L"Your scuccess percentage is %d %%", percentage);
 							 TextOut(TempBGHdc, 0.34*rect.right - ((l*cxChart) / 2), 0.5*rect.bottom + (cyChar*-2), szBuffer, l);
-							 l = wsprintf(szBuffer, L"   you have scored %d ponits", player2.score);
+							 l = wsprintf(szBuffer, L"   you have scored %d points", player2.score);
 							 TextOut(TempBGHdc, 0.34*rect.right - (((lstrlen(szSecondPlayerName) + l)*cxChart) / 2), 0.5*rect.bottom + (cyChar * 0), szSecondPlayerName, lstrlen(szSecondPlayerName));
 							 TextOut(TempBGHdc, 0.34*rect.right - (((l - lstrlen(szSecondPlayerName))*cxChart) / 2), 0.5*rect.bottom + (cyChar * 0), szBuffer, l);
 							 l = wsprintf(szBuffer, L"By taking %d chances", MaxPlay / 2);
@@ -1853,7 +1674,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 							 percentage = (((float)player2.score) / ((float)MaxPlay / 2)) * 100;
 							 l = wsprintf(szBuffer, L"Your scuccess percentage is %d %%", percentage);
 							 TextOut(TempBGHdc, 0.34*rect.right - ((l*cxChart) / 2), 0.5*rect.bottom + (cyChar * 2), szBuffer, l);
-							 TextOut(TempBGHdc, 0.34*rect.right - ((lstrlen(L"By seeing the scores ofcourse")*cxChart) / 2), 0.5*rect.bottom + (cyChar * 4), L"By seeing the scores ofcourse", lstrlen(L"By seeing the scores ofcourse"));
+							 TextOut(TempBGHdc, 0.34*rect.right - ((lstrlen(L"By seeing the scores of course")*cxChart) / 2), 0.5*rect.bottom + (cyChar * 4), L"By seeing the scores ofcourse", lstrlen(L"By seeing the scores ofcourse"));
 							 if (player1.score > player2.score)
 							 {
 								 TextOut(TempBGHdc, 0.34*rect.right - (((lstrlen(szFirstPlayerName) + lstrlen(L"   you have won"))*cxChart) / 2), 0.5*rect.bottom + (cyChar * 5), szFirstPlayerName, lstrlen(szFirstPlayerName));
