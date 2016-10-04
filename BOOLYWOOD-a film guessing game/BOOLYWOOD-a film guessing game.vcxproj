@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{437F6F6E-555B-4384-B3AB-E7F7831890B9}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>BOW-afilmguessinggame</RootNamespace>
+    <ProjectName>BOW-a film guessing game</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>"C:\Users\saini\Documents\Visual Studio 2013\Projects\BOOLYWOOD-a film guessing game\BOOLYWOOD-a film guessing game\c\bass.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>"c/bass.lib";Gdiplus.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <Profile>true</Profile>
+    </Link>
+    <PostBuildEvent>
+      <Command>XCOPY "$(SolutionDir)BOOLYWOOD-a film guessing game\DATA" "$(TargetDir)DATA" /s /i /y
+XCOPY "$(SolutionDir)BOOLYWOOD-a film guessing game\Background Music" "$(TargetDir)Background Music" /s /i /y
+XCOPY "$(SolutionDir)BOOLYWOOD-a film guessing game\Agreement.rtf" "$(TargetDir)" /i /y
+XCOPY "$(SolutionDir)BOOLYWOOD-a film guessing game\Agreement.txt" "$(TargetDir)" /i /y
+XCOPY "$(SolutionDir)BOOLYWOOD-a film guessing game\bass.dll" "$(TargetDir)" /i /y
+XCOPY "$(SolutionDir)BOOLYWOOD-a film guessing game\BLOGO.ico" "$(TargetDir)" /i /y
+XCOPY "$(SolutionDir)BOOLYWOOD-a film guessing game\Do not readme.txt" "$(TargetDir)" /i /y
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="Agreement.txt" />
+    <Text Include="Do not readme.txt" />
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bass.h" />
+    <ClInclude Include="BOW-a film guessing game.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BOW-a film guessing game.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BOOLYWOOD-a film guessing game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Visual Studio 2012\Projects\Win32 to practice 2\Win32 to practice 2\BLOGO.ico" />
+    <Image Include="BLOGO.ico" />
+    <Image Include="BOOLYWOOD-a film guessing game.ico" />
+    <Image Include="DATA\BLOGO.png" />
+    <Image Include="DATA\Images\Ash.png" />
+    <Image Include="DATA\Images\Bar.png" />
+    <Image Include="DATA\Images\Bar_Volume.png" />
+    <Image Include="DATA\Images\Button1.png" />
+    <Image Include="DATA\Images\Button2.png" />
+    <Image Include="DATA\Images\Button_Exit1.png" />
+    <Image Include="DATA\Images\Button_Exit2.png" />
+    <Image Include="DATA\Images\Button_Help1.png" />
+    <Image Include="DATA\Images\Button_Help2.png" />
+    <Image Include="DATA\Images\Button_Options1.png" />
+    <Image Include="DATA\Images\Button_Options2.png" />
+    <Image Include="DATA\Images\design-background-patterns.png" />
+    <Image Include="DATA\Images\green-background-vector-designs.jpg" />
+    <Image Include="DATA\Images\Hangman\hangman1.png" />
+    <Image Include="DATA\Images\Hangman\hangman2.png" />
+    <Image Include="DATA\Images\Hangman\hangman3.png" />
+    <Image Include="DATA\Images\Hangman\hangman4.png" />
+    <Image Include="DATA\Images\Hangman\hangman5.png" />
+    <Image Include="DATA\Images\Hangman\hangman6.png" />
+    <Image Include="DATA\Images\Hangman\hangman7.png" />
+    <Image Include="DATA\Images\Hangman\hangman8.png" />
+    <Image Include="DATA\Images\Hangman\hangman_full.png" />
+    <Image Include="DATA\Images\Panel_square.png" />
+    <Image Include="DATA\Images\pattern-orange-blue-sky-background-patterns-pattern-wallpapers.jpg" />
+    <Image Include="DATA\Images\wallpaper_abstract_pattern_widescreen_hd_wallpaper.jpg" />
+    <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="BOW-a film guessing game.exe.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Agreement.rtf" />
+    <None Include="bass.dll" />
+    <None Include="DATA\DATABASE.DAT" />
+    <None Include="manifest.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Background Music\Firmament.mp3" />
+    <Media Include="Background Music\Gonna Start.mp3" />
+    <Media Include="Background Music\Hustle.mp3" />
+    <Media Include="Background Music\Ice Flow.mp3" />
+    <Media Include="Background Music\Matts Blues.mp3" />
+    <Media Include="Background Music\Ouroboros.mp3" />
+    <Media Include="Background Music\Stealth Groover.mp3" />
+    <Media Include="DATA\Sounds\Background Music\Firmament.mp3" />
+    <Media Include="DATA\Sounds\Background Music\Gonna Start.mp3" />
+    <Media Include="DATA\Sounds\Background Music\Hustle.mp3" />
+    <Media Include="DATA\Sounds\Background Music\Ice Flow.mp3" />
+    <Media Include="DATA\Sounds\Background Music\Matts Blues.mp3" />
+    <Media Include="DATA\Sounds\Background Music\Ouroboros.mp3" />
+    <Media Include="DATA\Sounds\Background Music\Stealth Groover.mp3" />
+    <Media Include="DATA\Sounds\hang.wav" />
+    <Media Include="DATA\Sounds\Menu_click.wav" />
+    <Media Include="DATA\Sounds\quit.wav" />
+    <Media Include="DATA\Sounds\uhuh.wav" />
+    <Media Include="DATA\Sounds\yeah.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="bass.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

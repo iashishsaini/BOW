@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Lib">
+      <UniqueIdentifier>{9798e7ad-d444-4e04-a594-4b10f52940e0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+    <Text Include="Agreement.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Do not readme.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BOW-a film guessing game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BOW-a film guessing game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BOOLYWOOD-a film guessing game.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="BOOLYWOOD-a film guessing game.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Visual Studio 2012\Projects\Win32 to practice 2\Win32 to practice 2\BLOGO.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="BLOGO.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\BLOGO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Ash.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Bar.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Bar_Volume.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Button_Exit1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Button_Exit2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Button_Help1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Button_Help2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Button_Options1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Button_Options2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Button1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Button2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\design-background-patterns.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\green-background-vector-designs.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Panel_square.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\pattern-orange-blue-sky-background-patterns-pattern-wallpapers.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\wallpaper_abstract_pattern_widescreen_hd_wallpaper.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Hangman\hangman_full.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Hangman\hangman1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Hangman\hangman2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Hangman\hangman3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Hangman\hangman4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Hangman\hangman5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Hangman\hangman6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Hangman\hangman7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DATA\Images\Hangman\hangman8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="BOW-a film guessing game.exe.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="manifest.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Agreement.rtf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="bass.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="DATA\DATABASE.DAT">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="DATA\Sounds\hang.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\Menu_click.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\quit.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\uhuh.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\yeah.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\Background Music\Stealth Groover.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Background Music\Firmament.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\Background Music\Firmament.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\Background Music\Gonna Start.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Background Music\Gonna Start.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Background Music\Hustle.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\Background Music\Hustle.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Background Music\Ice Flow.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\Background Music\Ice Flow.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Background Music\Matts Blues.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\Background Music\Matts Blues.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Background Music\Ouroboros.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="DATA\Sounds\Background Music\Ouroboros.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Background Music\Stealth Groover.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="bass.lib">
+      <Filter>Lib</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

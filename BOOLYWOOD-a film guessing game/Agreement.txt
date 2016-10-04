@@ -1,0 +1,5 @@
+This programe is provided to you as it is with no gurantee of working on your machine.
+This programe is a freeware you can distribute to anyone without modifing the files.
+
+Programmesd by Ashish Saini
+Copyright (C) 2014 by JSE

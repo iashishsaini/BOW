@@ -1,0 +1,723 @@
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp}{}\section{C\+:/\+Users/\+Ashish Saini/\+Documents/\+Visual Studio 2013/\+Projects/\+B\+O\+O\+L\+Y\+W\+O\+O\+D-\/a film guessing game/\+B\+O\+O\+L\+Y\+W\+O\+O\+D-\/a film guessing game/\+B\+O\+W-\/a film guessing game.\+cpp File Reference}
+\label{_b_o_w-a_01film_01guessing_01game_8cpp}\index{C\+:/\+Users/\+Ashish Saini/\+Documents/\+Visual Studio 2013/\+Projects/\+B\+O\+O\+L\+Y\+W\+O\+O\+D-\/a film guessing game/\+B\+O\+O\+L\+Y\+W\+O\+O\+D-\/a film guessing game/\+B\+O\+W-\/a film guessing game.\+cpp@{C\+:/\+Users/\+Ashish Saini/\+Documents/\+Visual Studio 2013/\+Projects/\+B\+O\+O\+L\+Y\+W\+O\+O\+D-\/a film guessing game/\+B\+O\+O\+L\+Y\+W\+O\+O\+D-\/a film guessing game/\+B\+O\+W-\/a film guessing game.\+cpp}}
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}B\+O\+W-\/a film guessing game.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$Comm\+Ctrl.\+h$>$}\\*
+{\ttfamily \#include $<$Obj\+Idl.\+h$>$}\\*
+{\ttfamily \#include $<$gdiplus.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}c/bass.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$Shellapi.\+h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct___game_status}{\+\_\+\+Game\+Status}
+\item 
+struct \hyperlink{struct__score}{\+\_\+score}
+\item 
+struct \hyperlink{struct__mousepos}{\+\_\+mousepos}
+\item 
+struct \hyperlink{struct__subsorted_data}{\+\_\+subsorted\+Data}
+\item 
+struct \hyperlink{struct__sorteddata}{\+\_\+sorteddata}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a2b68559d692760680c326428841254d1}{M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G}~100
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a0ee8ac574ee810137ea85c2026eaff22}{C\+H\+A\+R\+\_\+\+N\+O\+T\+F\+O\+U\+N\+D}~300
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a1fbf1e25e6abe246e7a4d4d455e196e2}{C\+H\+A\+R\+\_\+\+R\+E\+P\+E\+A\+T\+E\+D}~1
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a27474da10fa502c19af4f6d0885d87f2}{C\+H\+A\+R\+\_\+\+V\+O\+W\+E\+L\+O\+R\+S\+P\+A\+C\+E}~2
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a7ff0286ba550fbb44fed0dc7b20a7873}{G\+A\+M\+E\+\_\+\+O\+U\+T\+O\+F\+L\+I\+V\+E\+S}~3
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_af2d4bd57aad7c709659ec7592986b1ce}{C\+H\+A\+R\+\_\+\+F\+O\+U\+N\+D}~4
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a9e5b20e0b05707a034e74f2675f48426}{O\+N\+E\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y}~5
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_af30d65db35eb2666a67025267672f07a}{T\+W\+O\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y}~6
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a2dd8f8a95969887f356ebd37acbb8a3a}{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+O\+N\+E\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y}~7
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a15b223e1da0e8d80a58e62f2ff3587ce}{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+T\+W\+O\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y}~8
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a835a0f64a6b2ef81005c0e85014132b1}{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R1\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N}~9
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a3ac1db3c91fc577703a04633ad710222}{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R2\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N}~10
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a80ec4a8c077821b335844529810fafb0}{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+I\+N\+G}~11
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a703796878d6617a8b973f3446487fa85}{G\+A\+M\+E\+\_\+\+P\+A\+U\+S\+E}~12
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_af14e3c0a9ccd116aca042880bf969811}{G\+A\+M\+E\+\_\+\+H\+A\+L\+T\+F\+O\+R\+U\+S\+E\+R\+I\+N\+P\+U\+T}~13
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a0a5f1eb3f9d32914cbd17c6319653442}{S\+C\+R\+E\+E\+N\+\_\+\+P\+L\+A\+Y}~14
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_afe562eb24b0c0f049ffcf13b31a6d75b}{S\+C\+R\+E\+E\+N\+\_\+\+R\+E\+S\+U\+L\+T\+S}~15
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a5331f2f48cc2652a72c20bc4826946ed}{S\+C\+R\+E\+E\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L}~16
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aff32b2add5186520b5ae86864ebaf51a}{P\+L\+A\+Y\+E\+R1}~17
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a7a2041512655fbd01e15d4516f7fb7cc}{P\+L\+A\+Y\+E\+R2}~18
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a6d46bdbd7001f1cf1618a9c1f554d51b}{G\+E\+N\+R\+E}~19
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a30b328ca499f27b3d0f8111b495834ca}{D\+A\+T\+E}~20
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a25e1e51a56fb864fa1c8a33a791c72bd}{G\+E\+N\+R\+E\+\_\+\+I\+N\+D\+E\+X}~21
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ae962b0235e2f69ad0f4cde780de67286}{G\+E\+N\+R\+E\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+I\+N\+D\+E\+X}~22
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ac633ae7413a1658f95c8c5e17ec7b1bd}{S\+C\+R\+E\+E\+N\+\_\+\+O\+P\+T\+I\+O\+N\+S}~23
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a6d1d5b20cac9afd87b2cbc5085e99d64}{O\+P\+T\+I\+O\+N\+S\+\_\+\+S\+O\+U\+N\+D\+S}~24
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_afebc691dd16ecfb225b08b9ab866e579}{O\+P\+T\+I\+O\+N\+S\+\_\+\+T\+H\+E\+M\+E\+S}~25
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a109faa3294156ce4d291f9a72b584d79}{O\+P\+T\+I\+O\+N\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S}~26
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ac69dbc130f2f432ad3ea0e1bb14d6e67}{F\+O\+C\+U\+S\+\_\+\+S\+O\+U\+N\+D\+S}~27
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a48398b45b3dc162e02ae7f263c7a4580}{F\+O\+C\+U\+S\+\_\+\+T\+H\+E\+M\+E\+S}~28
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_af44de7d27f7272b71451e9eb3f942dce}{F\+O\+C\+U\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S}~29
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a326907179945bd20ec3bbf3c44880151}{B\+G\+Music1}~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Stealth Groover.\+mp3\char`\"{}
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a7e4f5ce398c929d5f803303c5ecca704}{B\+G\+Music2}~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Gonna Start.\+mp3\char`\"{}
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ad71937906f191df89adc7eb7369b4a34}{B\+G\+Music3}~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Firmament.\+mp3\char`\"{}
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a075f81b2faca54b6a93b1bf9f49e33bb}{B\+G\+Music4}~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Ice Flow.\+mp3\char`\"{}
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aaec572860153cad71963667e40598c68}{B\+G\+Music5}~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Ouroboros.\+mp3\char`\"{}
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a6ef7ac6d245509521d483e136651598f}{B\+G\+Music6}~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Hustle.\+mp3\char`\"{}
+\item 
+\#define \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ab58467e454ef0d4d2917b9b9e88769d8}{B\+G\+Music7}~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Matts Blues.\+mp3\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+A\+T\+O\+M \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa0d0c9beb94350f8eac8fc4026a65375}{My\+Register\+Class} (H\+I\+N\+S\+T\+A\+N\+C\+E h\+Instance)
+\item 
+B\+O\+O\+L \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a5f77d4e3e5569ff9d236463fd80ebe28}{Init\+Instance} (H\+I\+N\+S\+T\+A\+N\+C\+E, int)
+\item 
+L\+R\+E\+S\+U\+L\+T C\+A\+L\+L\+B\+A\+C\+K \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a9135ea2a0d6fce68ba3b858226a31a4f}{Wnd\+Proc} (H\+W\+N\+D, U\+I\+N\+T, W\+P\+A\+R\+A\+M, L\+P\+A\+R\+A\+M)
+\item 
+I\+N\+T\+\_\+\+P\+T\+R C\+A\+L\+L\+B\+A\+C\+K \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a5873af2ee357a48c39cdd824f51c1c9c}{About} (H\+W\+N\+D, U\+I\+N\+T, W\+P\+A\+R\+A\+M, L\+P\+A\+R\+A\+M)
+\item 
+I\+N\+T\+\_\+\+P\+T\+R C\+A\+L\+L\+B\+A\+C\+K \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a09671f5a4fceb7869c61603ea361260f}{New\+Game} (H\+W\+N\+D, U\+I\+N\+T, W\+P\+A\+R\+A\+M, L\+P\+A\+R\+A\+M)
+\item 
+void \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a6b823f257026b7014379a568a9ee0674}{Game\+Controler} ()
+\item 
+void \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a6663fba813a44adbada0c8b08eb8c328}{film\+\_\+importer} ()
+\item 
+int \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a1580b4205b99ef1d084d5592befc9b81}{Total\+Effective\+Films} ()
+\item 
+void \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a844b65907b85d1b68843603a3d530f46}{Data\+Sorter} (U\+I\+N\+T Data\+Type)
+\item 
+int \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a9c28ab6d188de541ba834a20c87f5cf3}{Film\+Chooser} ()
+\item 
+int \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a8c4bb564466cca1f3a5ca7e98426d408}{Char\+Checker} (T\+C\+H\+A\+R film\mbox{[}50\mbox{]}, T\+C\+H\+A\+R Recieved\+Char)
+\item 
+void \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a1d54062b70b08f8a9d208a3a4a81917a}{Film\+Name\+With\+Blanks} (T\+C\+H\+A\+R film\mbox{[}100\mbox{]})
+\item 
+int \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a6cee248a5ed1ce3ff9812facd2773e4c}{Blanks\+Filler} (T\+C\+H\+A\+R Films\+With\+Blanks\mbox{[}50\mbox{]}, T\+C\+H\+A\+R film\mbox{[}50\mbox{]}, T\+C\+H\+A\+R Recieved\+Char)
+\item 
+void \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a48d94754ebff71d662296b454681612f}{Data\+Resetter} (B\+O\+O\+L Game\+Is\+Of\+Two\+Players, B\+O\+O\+L Game\+Is\+Of\+One\+Player, B\+O\+O\+L Resset\+Things\+Of\+One\+Time)
+\item 
+int A\+P\+I\+E\+N\+T\+R\+Y \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a6ace68ee976d9c576e8be85cc95ee685}{\+\_\+t\+Win\+Main} (\+\_\+\+In\+\_\+ H\+I\+N\+S\+T\+A\+N\+C\+E h\+Instance, \+\_\+\+In\+\_\+opt\+\_\+ H\+I\+N\+S\+T\+A\+N\+C\+E h\+Prev\+Instance, \+\_\+\+In\+\_\+ L\+P\+T\+S\+T\+R lp\+Cmd\+Line, \+\_\+\+In\+\_\+ int n\+Cmd\+Show)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+U\+L\+O\+N\+G\+\_\+\+P\+T\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_af12b122c239334cdcd9d6922bad12862}{m\+\_\+gdiplus\+Token}
+\item 
+H\+D\+C \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a73a3f758934f64a1cc96332c726e31e5}{Per\+B\+G\+Hdc}
+\item 
+H\+D\+C \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a4be9a5a1cac801777358d2c0e3f90830}{Temp\+B\+G\+Hdc}
+\item 
+H\+B\+I\+T\+M\+A\+P \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a8a80a55aa6b2fc79b377b94981b09c07}{Per\+B\+G\+Bitmap}
+\item 
+H\+B\+I\+T\+M\+A\+P \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a4df24c9cd183e9df90e2fc5a09e54aa6}{Temp\+B\+G\+Bitmap}
+\item 
+B\+O\+O\+L \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a7c08b194baed7ff0320a51a91d26fe3a}{one} = F\+A\+L\+S\+E
+\item 
+H\+I\+N\+S\+T\+A\+N\+C\+E \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a44f41244c97693b2fbd5244bcb1e86ec}{h\+Inst}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a0255997040d96a52f933b0c0d4bd8e01}{sz\+Title} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a2b68559d692760680c326428841254d1}{M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G}\mbox{]} = L\char`\"{}B\+O\+W -\/ a film guessing game\char`\"{}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ac428b0bb455914397f2929cc9a3eb9e4}{sz\+Window\+Class} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a2b68559d692760680c326428841254d1}{M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G}\mbox{]} =L\char`\"{}Main\+Window\+Class\char`\"{}
+\item 
+H\+W\+N\+D \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ad475b56f2055d00b3c693f6560c10e8e}{Static\+Text\+Handle}
+\item 
+const U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{M\+A\+X\+\_\+\+F\+I\+L\+M\+S} = 2000
+\item 
+B\+O\+O\+L \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ab4773708eb66f5571e5be7c1ca60e18f}{Is\+Dialog\+Ok} = F\+A\+L\+S\+E
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aedf0cbc1060fead9a0a886a70839adc6}{sz\+Bollywood} \mbox{[}11\mbox{]} = \{ L\char`\"{}B\+O\+L\+L\+Y\+W\+O\+O\+D\char`\"{} \}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a5395e1d056409332f992a2be60057f52}{Key\+Strokes\+Saver} \mbox{[}50\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a11d6153ad375461db42b9361294baf70}{sz\+Film\+With\+Blanks} \mbox{[}50\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a256db13e12f5162c4691b74f4f22b022}{sz\+First\+Player\+Name} \mbox{[}30\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a41b8733f446795d8c7f235a56942fdde}{sz\+Second\+Player\+Name} \mbox{[}30\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a85e5959c4bc22d8f1f1633372b67e1ba}{sz\+Film\+Names} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}50\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a02f5aa7ae1dd7f88cc51f45b5ce4007c}{sz\+Film\+Release\+Date} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}10\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ae1f4d278947a20ab67e1c5d1eca21018}{sz\+Film\+Main\+Cast} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_afd00366e1d43294ba013715e9b42874d}{sz\+Film\+Wiki\+Links} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ac8e67acaa1ef598ab55e5690b5fc4e4a}{sz\+Film\+Imdb\+Links} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a01a6533181bdfc23246ee27b81676dd4}{sz\+Film\+Genre} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_abf59bae7e5868bcd8abffb3efd1c20e4}{sz\+Film\+Director} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_adabd6149d4ae0439f2cca30177746b0c}{i\+Menu\+Sound2} =0
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa0a3891a9b50affabc7596c660bb26a9}{i\+Menu\+Sound3} =0
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a82d7703b8813bfd2a29818c91e75b100}{Invalidat}
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a5648a01db7fef763491b4201c024c633}{i\+Display\+Code}
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a73cf9225cccfb40d7c795a7edaa0887a}{i\+Quotes\+Code}
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a367defee513037600b01dd575f342e51}{i\+Bow\+Life\+Counter}
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_acaa93e2bd2a424cfc45e2a7c95a74d95}{total\+\_\+films} = 0
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ab0a07588b9b285d7bbf9a93552a9309e}{i\+Film\+Number\+Choosen}
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a14e016f5b05bf5b31b6a5e34ebf14ddf}{checker} \mbox{[}\hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_af1c05f398b0659e822fd85b72d4915be}{initiali} = 0
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a30496839d082019937429867d2a7187b}{Game\+Mode}
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a3aad5b2acd91d72c754f0b79d8b13d16}{Max\+Play}
+\item 
+U\+I\+N\+T \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a2fc578768f4bc136312d3d154752668f}{i\+Screen} = \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a5331f2f48cc2652a72c20bc4826946ed}{S\+C\+R\+E\+E\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L}
+\item 
+Gdiplus\+Startup\+Input \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a3391e353e9dd078052293d5bce1f786c}{gdiplus\+Startup\+Input}
+\item 
+H\+S\+T\+R\+E\+A\+M \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a08dcb39799175d7c285e85f952c6cae0}{quit}
+\item 
+H\+S\+T\+R\+E\+A\+M \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a93cad2fb0e5395146ea60cfd24de90bf}{uhuh}
+\item 
+H\+S\+T\+R\+E\+A\+M \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a3ac190655e22c3f8fb5c499134d11c13}{yeah}
+\item 
+H\+S\+T\+R\+E\+A\+M \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_acdde03058563bb0178660fb650bc1b90}{hang}
+\item 
+H\+S\+T\+R\+E\+A\+M \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a3262b00c8915b649e2577ff5c37c9f86}{Menu\+Click}
+\item 
+H\+S\+T\+R\+E\+A\+M \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ad093fa3d7a856a0f74bbf603202402d1}{B\+G\+Music} = N\+U\+L\+L
+\item 
+B\+O\+O\+L \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_aa24733944d268c93321f9e5c0d7a1d0c}{Debug\+Mode} = F\+A\+L\+S\+E
+\item 
+B\+O\+O\+L \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a34f4e61985cc9c9802de019181a92057}{Show\+Hint} = F\+A\+L\+S\+E
+\item 
+int \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a05dd3dfc153be3477d3fb9560f5283d6}{i\+F\+X\+Level} = 120
+\item 
+int \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ae85a7c952565937ee7e9df5d0507fd33}{i\+Volume\+Level} =120
+\item 
+double \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_abf7240438cea784c260c523f712efb7b}{f\+Volume\+Level} = 1.\+0
+\item 
+double \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a2343f912f77bd8c880abaf1f2c8ea4ce}{f\+F\+X\+Level} =1.\+0
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a8837e0ecc39b8b0f1aa81db475440cfc}{sz\+Wrong\+Guess} \mbox{[}7\mbox{]}\mbox{[}100\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a0a386db4a3ed62a1602a49a18987223e}{sz\+Correctly\+Guessed\+Movie} \mbox{[}6\mbox{]}\mbox{[}100\mbox{]}
+\item 
+T\+C\+H\+A\+R \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a405b15b25b866dd610f5c107ded83b8e}{sz\+Not\+Guessed\+The\+Movie} \mbox{[}6\mbox{]}\mbox{[}100\mbox{]}
+\item 
+struct \hyperlink{struct___game_status}{\+\_\+\+Game\+Status} \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ada08e0af48b69529004bed6d4f440da3}{Game\+Status}
+\item 
+struct \hyperlink{struct__score}{\+\_\+score} \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a4a97c77b5f6013b6bd9fc8ce9f47ffbb}{player1}
+\item 
+struct \hyperlink{struct__score}{\+\_\+score} \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_a91fde0a0b415b1de76a040339624fcd0}{player2}
+\item 
+struct \hyperlink{struct__mousepos}{\+\_\+mousepos} \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ad452c12766db219c3783b0996eeaa4b5}{Mouse\+Position}
+\item 
+struct \hyperlink{struct__sorteddata}{\+\_\+sorteddata} \hyperlink{_b_o_w-a_01film_01guessing_01game_8cpp_ab817d711a9f15bd907c455a2d29a06d7}{Sorted\+Data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a326907179945bd20ec3bbf3c44880151}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!B\+G\+Music1@{B\+G\+Music1}}
+\index{B\+G\+Music1@{B\+G\+Music1}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{B\+G\+Music1}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+Music1~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Stealth Groover.\+mp3\char`\"{}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a326907179945bd20ec3bbf3c44880151}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a7e4f5ce398c929d5f803303c5ecca704}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!B\+G\+Music2@{B\+G\+Music2}}
+\index{B\+G\+Music2@{B\+G\+Music2}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{B\+G\+Music2}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+Music2~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Gonna Start.\+mp3\char`\"{}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a7e4f5ce398c929d5f803303c5ecca704}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ad71937906f191df89adc7eb7369b4a34}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!B\+G\+Music3@{B\+G\+Music3}}
+\index{B\+G\+Music3@{B\+G\+Music3}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{B\+G\+Music3}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+Music3~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Firmament.\+mp3\char`\"{}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ad71937906f191df89adc7eb7369b4a34}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a075f81b2faca54b6a93b1bf9f49e33bb}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!B\+G\+Music4@{B\+G\+Music4}}
+\index{B\+G\+Music4@{B\+G\+Music4}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{B\+G\+Music4}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+Music4~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Ice Flow.\+mp3\char`\"{}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a075f81b2faca54b6a93b1bf9f49e33bb}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_aaec572860153cad71963667e40598c68}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!B\+G\+Music5@{B\+G\+Music5}}
+\index{B\+G\+Music5@{B\+G\+Music5}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{B\+G\+Music5}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+Music5~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Ouroboros.\+mp3\char`\"{}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_aaec572860153cad71963667e40598c68}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a6ef7ac6d245509521d483e136651598f}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!B\+G\+Music6@{B\+G\+Music6}}
+\index{B\+G\+Music6@{B\+G\+Music6}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{B\+G\+Music6}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+Music6~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Hustle.\+mp3\char`\"{}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a6ef7ac6d245509521d483e136651598f}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ab58467e454ef0d4d2917b9b9e88769d8}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!B\+G\+Music7@{B\+G\+Music7}}
+\index{B\+G\+Music7@{B\+G\+Music7}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{B\+G\+Music7}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+Music7~L\char`\"{}D\+A\+T\+A/Sounds/Background Music/Matts Blues.\+mp3\char`\"{}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ab58467e454ef0d4d2917b9b9e88769d8}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_af2d4bd57aad7c709659ec7592986b1ce}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!C\+H\+A\+R\+\_\+\+F\+O\+U\+N\+D@{C\+H\+A\+R\+\_\+\+F\+O\+U\+N\+D}}
+\index{C\+H\+A\+R\+\_\+\+F\+O\+U\+N\+D@{C\+H\+A\+R\+\_\+\+F\+O\+U\+N\+D}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{C\+H\+A\+R\+\_\+\+F\+O\+U\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+H\+A\+R\+\_\+\+F\+O\+U\+N\+D~4}\label{_b_o_w-a_01film_01guessing_01game_8cpp_af2d4bd57aad7c709659ec7592986b1ce}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a0ee8ac574ee810137ea85c2026eaff22}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!C\+H\+A\+R\+\_\+\+N\+O\+T\+F\+O\+U\+N\+D@{C\+H\+A\+R\+\_\+\+N\+O\+T\+F\+O\+U\+N\+D}}
+\index{C\+H\+A\+R\+\_\+\+N\+O\+T\+F\+O\+U\+N\+D@{C\+H\+A\+R\+\_\+\+N\+O\+T\+F\+O\+U\+N\+D}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{C\+H\+A\+R\+\_\+\+N\+O\+T\+F\+O\+U\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+H\+A\+R\+\_\+\+N\+O\+T\+F\+O\+U\+N\+D~300}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a0ee8ac574ee810137ea85c2026eaff22}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a1fbf1e25e6abe246e7a4d4d455e196e2}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!C\+H\+A\+R\+\_\+\+R\+E\+P\+E\+A\+T\+E\+D@{C\+H\+A\+R\+\_\+\+R\+E\+P\+E\+A\+T\+E\+D}}
+\index{C\+H\+A\+R\+\_\+\+R\+E\+P\+E\+A\+T\+E\+D@{C\+H\+A\+R\+\_\+\+R\+E\+P\+E\+A\+T\+E\+D}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{C\+H\+A\+R\+\_\+\+R\+E\+P\+E\+A\+T\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+H\+A\+R\+\_\+\+R\+E\+P\+E\+A\+T\+E\+D~1}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a1fbf1e25e6abe246e7a4d4d455e196e2}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a27474da10fa502c19af4f6d0885d87f2}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!C\+H\+A\+R\+\_\+\+V\+O\+W\+E\+L\+O\+R\+S\+P\+A\+C\+E@{C\+H\+A\+R\+\_\+\+V\+O\+W\+E\+L\+O\+R\+S\+P\+A\+C\+E}}
+\index{C\+H\+A\+R\+\_\+\+V\+O\+W\+E\+L\+O\+R\+S\+P\+A\+C\+E@{C\+H\+A\+R\+\_\+\+V\+O\+W\+E\+L\+O\+R\+S\+P\+A\+C\+E}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{C\+H\+A\+R\+\_\+\+V\+O\+W\+E\+L\+O\+R\+S\+P\+A\+C\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+H\+A\+R\+\_\+\+V\+O\+W\+E\+L\+O\+R\+S\+P\+A\+C\+E~2}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a27474da10fa502c19af4f6d0885d87f2}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a30b328ca499f27b3d0f8111b495834ca}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!D\+A\+T\+E@{D\+A\+T\+E}}
+\index{D\+A\+T\+E@{D\+A\+T\+E}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{D\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+A\+T\+E~20}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a30b328ca499f27b3d0f8111b495834ca}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ac69dbc130f2f432ad3ea0e1bb14d6e67}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!F\+O\+C\+U\+S\+\_\+\+S\+O\+U\+N\+D\+S@{F\+O\+C\+U\+S\+\_\+\+S\+O\+U\+N\+D\+S}}
+\index{F\+O\+C\+U\+S\+\_\+\+S\+O\+U\+N\+D\+S@{F\+O\+C\+U\+S\+\_\+\+S\+O\+U\+N\+D\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{F\+O\+C\+U\+S\+\_\+\+S\+O\+U\+N\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+C\+U\+S\+\_\+\+S\+O\+U\+N\+D\+S~27}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ac69dbc130f2f432ad3ea0e1bb14d6e67}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a48398b45b3dc162e02ae7f263c7a4580}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!F\+O\+C\+U\+S\+\_\+\+T\+H\+E\+M\+E\+S@{F\+O\+C\+U\+S\+\_\+\+T\+H\+E\+M\+E\+S}}
+\index{F\+O\+C\+U\+S\+\_\+\+T\+H\+E\+M\+E\+S@{F\+O\+C\+U\+S\+\_\+\+T\+H\+E\+M\+E\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{F\+O\+C\+U\+S\+\_\+\+T\+H\+E\+M\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+C\+U\+S\+\_\+\+T\+H\+E\+M\+E\+S~28}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a48398b45b3dc162e02ae7f263c7a4580}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_af44de7d27f7272b71451e9eb3f942dce}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!F\+O\+C\+U\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S@{F\+O\+C\+U\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S}}
+\index{F\+O\+C\+U\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S@{F\+O\+C\+U\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{F\+O\+C\+U\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+C\+U\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S~29}\label{_b_o_w-a_01film_01guessing_01game_8cpp_af44de7d27f7272b71451e9eb3f942dce}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_af14e3c0a9ccd116aca042880bf969811}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+A\+M\+E\+\_\+\+H\+A\+L\+T\+F\+O\+R\+U\+S\+E\+R\+I\+N\+P\+U\+T@{G\+A\+M\+E\+\_\+\+H\+A\+L\+T\+F\+O\+R\+U\+S\+E\+R\+I\+N\+P\+U\+T}}
+\index{G\+A\+M\+E\+\_\+\+H\+A\+L\+T\+F\+O\+R\+U\+S\+E\+R\+I\+N\+P\+U\+T@{G\+A\+M\+E\+\_\+\+H\+A\+L\+T\+F\+O\+R\+U\+S\+E\+R\+I\+N\+P\+U\+T}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+A\+M\+E\+\_\+\+H\+A\+L\+T\+F\+O\+R\+U\+S\+E\+R\+I\+N\+P\+U\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+A\+M\+E\+\_\+\+H\+A\+L\+T\+F\+O\+R\+U\+S\+E\+R\+I\+N\+P\+U\+T~13}\label{_b_o_w-a_01film_01guessing_01game_8cpp_af14e3c0a9ccd116aca042880bf969811}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a7ff0286ba550fbb44fed0dc7b20a7873}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+A\+M\+E\+\_\+\+O\+U\+T\+O\+F\+L\+I\+V\+E\+S@{G\+A\+M\+E\+\_\+\+O\+U\+T\+O\+F\+L\+I\+V\+E\+S}}
+\index{G\+A\+M\+E\+\_\+\+O\+U\+T\+O\+F\+L\+I\+V\+E\+S@{G\+A\+M\+E\+\_\+\+O\+U\+T\+O\+F\+L\+I\+V\+E\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+A\+M\+E\+\_\+\+O\+U\+T\+O\+F\+L\+I\+V\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+A\+M\+E\+\_\+\+O\+U\+T\+O\+F\+L\+I\+V\+E\+S~3}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a7ff0286ba550fbb44fed0dc7b20a7873}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a2dd8f8a95969887f356ebd37acbb8a3a}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+O\+N\+E\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y@{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+O\+N\+E\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y}}
+\index{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+O\+N\+E\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y@{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+O\+N\+E\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+O\+N\+E\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+O\+N\+E\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y~7}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a2dd8f8a95969887f356ebd37acbb8a3a}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a15b223e1da0e8d80a58e62f2ff3587ce}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+T\+W\+O\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y@{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+T\+W\+O\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y}}
+\index{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+T\+W\+O\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y@{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+T\+W\+O\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+T\+W\+O\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+A\+M\+E\+\_\+\+O\+V\+E\+R\+F\+O\+R\+T\+W\+O\+P\+L\+A\+Y\+E\+R\+P\+L\+A\+Y~8}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a15b223e1da0e8d80a58e62f2ff3587ce}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a703796878d6617a8b973f3446487fa85}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+A\+M\+E\+\_\+\+P\+A\+U\+S\+E@{G\+A\+M\+E\+\_\+\+P\+A\+U\+S\+E}}
+\index{G\+A\+M\+E\+\_\+\+P\+A\+U\+S\+E@{G\+A\+M\+E\+\_\+\+P\+A\+U\+S\+E}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+A\+M\+E\+\_\+\+P\+A\+U\+S\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+A\+M\+E\+\_\+\+P\+A\+U\+S\+E~12}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a703796878d6617a8b973f3446487fa85}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a835a0f64a6b2ef81005c0e85014132b1}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R1\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N@{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R1\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N}}
+\index{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R1\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N@{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R1\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R1\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R1\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N~9}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a835a0f64a6b2ef81005c0e85014132b1}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a3ac1db3c91fc577703a04633ad710222}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R2\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N@{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R2\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N}}
+\index{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R2\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N@{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R2\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R2\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+E\+R2\+O\+N\+E\+T\+I\+M\+E\+W\+O\+N~10}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a3ac1db3c91fc577703a04633ad710222}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a80ec4a8c077821b335844529810fafb0}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+I\+N\+G@{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+I\+N\+G}}
+\index{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+I\+N\+G@{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+I\+N\+G}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+A\+M\+E\+\_\+\+P\+L\+A\+Y\+I\+N\+G~11}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a80ec4a8c077821b335844529810fafb0}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a6d46bdbd7001f1cf1618a9c1f554d51b}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+E\+N\+R\+E@{G\+E\+N\+R\+E}}
+\index{G\+E\+N\+R\+E@{G\+E\+N\+R\+E}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+E\+N\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+E\+N\+R\+E~19}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a6d46bdbd7001f1cf1618a9c1f554d51b}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ae962b0235e2f69ad0f4cde780de67286}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+E\+N\+R\+E\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+I\+N\+D\+E\+X@{G\+E\+N\+R\+E\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+I\+N\+D\+E\+X}}
+\index{G\+E\+N\+R\+E\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+I\+N\+D\+E\+X@{G\+E\+N\+R\+E\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+I\+N\+D\+E\+X}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+E\+N\+R\+E\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+I\+N\+D\+E\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+E\+N\+R\+E\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+I\+N\+D\+E\+X~22}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ae962b0235e2f69ad0f4cde780de67286}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a25e1e51a56fb864fa1c8a33a791c72bd}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!G\+E\+N\+R\+E\+\_\+\+I\+N\+D\+E\+X@{G\+E\+N\+R\+E\+\_\+\+I\+N\+D\+E\+X}}
+\index{G\+E\+N\+R\+E\+\_\+\+I\+N\+D\+E\+X@{G\+E\+N\+R\+E\+\_\+\+I\+N\+D\+E\+X}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{G\+E\+N\+R\+E\+\_\+\+I\+N\+D\+E\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+E\+N\+R\+E\+\_\+\+I\+N\+D\+E\+X~21}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a25e1e51a56fb864fa1c8a33a791c72bd}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a2b68559d692760680c326428841254d1}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G@{M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G}}
+\index{M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G@{M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G~100}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a2b68559d692760680c326428841254d1}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a9e5b20e0b05707a034e74f2675f48426}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!O\+N\+E\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y@{O\+N\+E\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y}}
+\index{O\+N\+E\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y@{O\+N\+E\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{O\+N\+E\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+N\+E\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y~5}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a9e5b20e0b05707a034e74f2675f48426}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a6d1d5b20cac9afd87b2cbc5085e99d64}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!O\+P\+T\+I\+O\+N\+S\+\_\+\+S\+O\+U\+N\+D\+S@{O\+P\+T\+I\+O\+N\+S\+\_\+\+S\+O\+U\+N\+D\+S}}
+\index{O\+P\+T\+I\+O\+N\+S\+\_\+\+S\+O\+U\+N\+D\+S@{O\+P\+T\+I\+O\+N\+S\+\_\+\+S\+O\+U\+N\+D\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{O\+P\+T\+I\+O\+N\+S\+\_\+\+S\+O\+U\+N\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+P\+T\+I\+O\+N\+S\+\_\+\+S\+O\+U\+N\+D\+S~24}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a6d1d5b20cac9afd87b2cbc5085e99d64}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_afebc691dd16ecfb225b08b9ab866e579}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!O\+P\+T\+I\+O\+N\+S\+\_\+\+T\+H\+E\+M\+E\+S@{O\+P\+T\+I\+O\+N\+S\+\_\+\+T\+H\+E\+M\+E\+S}}
+\index{O\+P\+T\+I\+O\+N\+S\+\_\+\+T\+H\+E\+M\+E\+S@{O\+P\+T\+I\+O\+N\+S\+\_\+\+T\+H\+E\+M\+E\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{O\+P\+T\+I\+O\+N\+S\+\_\+\+T\+H\+E\+M\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+P\+T\+I\+O\+N\+S\+\_\+\+T\+H\+E\+M\+E\+S~25}\label{_b_o_w-a_01film_01guessing_01game_8cpp_afebc691dd16ecfb225b08b9ab866e579}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a109faa3294156ce4d291f9a72b584d79}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!O\+P\+T\+I\+O\+N\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S@{O\+P\+T\+I\+O\+N\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S}}
+\index{O\+P\+T\+I\+O\+N\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S@{O\+P\+T\+I\+O\+N\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{O\+P\+T\+I\+O\+N\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+P\+T\+I\+O\+N\+S\+\_\+\+U\+P\+D\+A\+T\+E\+S~26}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a109faa3294156ce4d291f9a72b584d79}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_aff32b2add5186520b5ae86864ebaf51a}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!P\+L\+A\+Y\+E\+R1@{P\+L\+A\+Y\+E\+R1}}
+\index{P\+L\+A\+Y\+E\+R1@{P\+L\+A\+Y\+E\+R1}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{P\+L\+A\+Y\+E\+R1}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+L\+A\+Y\+E\+R1~17}\label{_b_o_w-a_01film_01guessing_01game_8cpp_aff32b2add5186520b5ae86864ebaf51a}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a7a2041512655fbd01e15d4516f7fb7cc}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!P\+L\+A\+Y\+E\+R2@{P\+L\+A\+Y\+E\+R2}}
+\index{P\+L\+A\+Y\+E\+R2@{P\+L\+A\+Y\+E\+R2}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{P\+L\+A\+Y\+E\+R2}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+L\+A\+Y\+E\+R2~18}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a7a2041512655fbd01e15d4516f7fb7cc}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a5331f2f48cc2652a72c20bc4826946ed}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!S\+C\+R\+E\+E\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L@{S\+C\+R\+E\+E\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L}}
+\index{S\+C\+R\+E\+E\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L@{S\+C\+R\+E\+E\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{S\+C\+R\+E\+E\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+C\+R\+E\+E\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L~16}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a5331f2f48cc2652a72c20bc4826946ed}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ac633ae7413a1658f95c8c5e17ec7b1bd}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!S\+C\+R\+E\+E\+N\+\_\+\+O\+P\+T\+I\+O\+N\+S@{S\+C\+R\+E\+E\+N\+\_\+\+O\+P\+T\+I\+O\+N\+S}}
+\index{S\+C\+R\+E\+E\+N\+\_\+\+O\+P\+T\+I\+O\+N\+S@{S\+C\+R\+E\+E\+N\+\_\+\+O\+P\+T\+I\+O\+N\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{S\+C\+R\+E\+E\+N\+\_\+\+O\+P\+T\+I\+O\+N\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+C\+R\+E\+E\+N\+\_\+\+O\+P\+T\+I\+O\+N\+S~23}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ac633ae7413a1658f95c8c5e17ec7b1bd}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a0a5f1eb3f9d32914cbd17c6319653442}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!S\+C\+R\+E\+E\+N\+\_\+\+P\+L\+A\+Y@{S\+C\+R\+E\+E\+N\+\_\+\+P\+L\+A\+Y}}
+\index{S\+C\+R\+E\+E\+N\+\_\+\+P\+L\+A\+Y@{S\+C\+R\+E\+E\+N\+\_\+\+P\+L\+A\+Y}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{S\+C\+R\+E\+E\+N\+\_\+\+P\+L\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+C\+R\+E\+E\+N\+\_\+\+P\+L\+A\+Y~14}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a0a5f1eb3f9d32914cbd17c6319653442}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_afe562eb24b0c0f049ffcf13b31a6d75b}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!S\+C\+R\+E\+E\+N\+\_\+\+R\+E\+S\+U\+L\+T\+S@{S\+C\+R\+E\+E\+N\+\_\+\+R\+E\+S\+U\+L\+T\+S}}
+\index{S\+C\+R\+E\+E\+N\+\_\+\+R\+E\+S\+U\+L\+T\+S@{S\+C\+R\+E\+E\+N\+\_\+\+R\+E\+S\+U\+L\+T\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{S\+C\+R\+E\+E\+N\+\_\+\+R\+E\+S\+U\+L\+T\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+C\+R\+E\+E\+N\+\_\+\+R\+E\+S\+U\+L\+T\+S~15}\label{_b_o_w-a_01film_01guessing_01game_8cpp_afe562eb24b0c0f049ffcf13b31a6d75b}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_af30d65db35eb2666a67025267672f07a}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!T\+W\+O\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y@{T\+W\+O\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y}}
+\index{T\+W\+O\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y@{T\+W\+O\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{T\+W\+O\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+W\+O\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+L\+A\+Y~6}\label{_b_o_w-a_01film_01guessing_01game_8cpp_af30d65db35eb2666a67025267672f07a}
+
+
+\subsection{Function Documentation}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a6ace68ee976d9c576e8be85cc95ee685}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!\+\_\+t\+Win\+Main@{\+\_\+t\+Win\+Main}}
+\index{\+\_\+t\+Win\+Main@{\+\_\+t\+Win\+Main}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{\+\_\+t\+Win\+Main}]{\setlength{\rightskip}{0pt plus 5cm}A\+P\+I\+E\+N\+T\+R\+Y \+\_\+t\+Win\+Main (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ H\+I\+N\+S\+T\+A\+N\+C\+E}]{h\+Instance, }
+\item[{\+\_\+\+In\+\_\+opt\+\_\+ H\+I\+N\+S\+T\+A\+N\+C\+E}]{h\+Prev\+Instance, }
+\item[{\+\_\+\+In\+\_\+ L\+P\+T\+S\+T\+R}]{lp\+Cmd\+Line, }
+\item[{\+\_\+\+In\+\_\+ int}]{n\+Cmd\+Show}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a6ace68ee976d9c576e8be85cc95ee685}
+Its main entry point of win32 program. It intiliaze window title, icon and also have message loop for running the programe \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a5873af2ee357a48c39cdd824f51c1c9c}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!About@{About}}
+\index{About@{About}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{About}]{\setlength{\rightskip}{0pt plus 5cm}I\+N\+T\+\_\+\+P\+T\+R C\+A\+L\+L\+B\+A\+C\+K About (
+\begin{DoxyParamCaption}
+\item[{H\+W\+N\+D}]{h\+Dlg, }
+\item[{U\+I\+N\+T}]{message, }
+\item[{W\+P\+A\+R\+A\+M}]{w\+Param, }
+\item[{L\+P\+A\+R\+A\+M}]{l\+Param}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a5873af2ee357a48c39cdd824f51c1c9c}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a6cee248a5ed1ce3ff9812facd2773e4c}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Blanks\+Filler@{Blanks\+Filler}}
+\index{Blanks\+Filler@{Blanks\+Filler}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Blanks\+Filler}]{\setlength{\rightskip}{0pt plus 5cm}int Blanks\+Filler (
+\begin{DoxyParamCaption}
+\item[{T\+C\+H\+A\+R}]{Films\+With\+Blanks\mbox{[}50\mbox{]}, }
+\item[{T\+C\+H\+A\+R}]{film\mbox{[}50\mbox{]}, }
+\item[{T\+C\+H\+A\+R}]{Recieved\+Char}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a6cee248a5ed1ce3ff9812facd2773e4c}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a8c4bb564466cca1f3a5ca7e98426d408}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Char\+Checker@{Char\+Checker}}
+\index{Char\+Checker@{Char\+Checker}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Char\+Checker}]{\setlength{\rightskip}{0pt plus 5cm}Char\+Checker (
+\begin{DoxyParamCaption}
+\item[{T\+C\+H\+A\+R}]{film\mbox{[}50\mbox{]}, }
+\item[{T\+C\+H\+A\+R}]{Recieved\+Char}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a8c4bb564466cca1f3a5ca7e98426d408}
+-\/\+This function checks the input of user. It checks following things
+\begin{DoxyItemize}
+\item Checks for repeated input
+\item Checks for alphabet is available or not
+\item Checks if it is a vowel or a consonant \begin{DoxyReturn}{Returns}
+status of Recieved\+Char like char is a vowel or is it repeated, etc 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a48d94754ebff71d662296b454681612f}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Data\+Resetter@{Data\+Resetter}}
+\index{Data\+Resetter@{Data\+Resetter}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Data\+Resetter}]{\setlength{\rightskip}{0pt plus 5cm}Data\+Resetter (
+\begin{DoxyParamCaption}
+\item[{B\+O\+O\+L}]{Game\+Is\+Of\+Two\+Players, }
+\item[{B\+O\+O\+L}]{Game\+Is\+Of\+One\+Player, }
+\item[{B\+O\+O\+L}]{Resset\+Things\+Of\+One\+Time}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a48d94754ebff71d662296b454681612f}
+This function reset the arrays and variables to use them again \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a844b65907b85d1b68843603a3d530f46}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Data\+Sorter@{Data\+Sorter}}
+\index{Data\+Sorter@{Data\+Sorter}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Data\+Sorter}]{\setlength{\rightskip}{0pt plus 5cm}void Data\+Sorter (
+\begin{DoxyParamCaption}
+\item[{U\+I\+N\+T}]{Data\+Type}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a844b65907b85d1b68843603a3d530f46}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a6663fba813a44adbada0c8b08eb8c328}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!film\+\_\+importer@{film\+\_\+importer}}
+\index{film\+\_\+importer@{film\+\_\+importer}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{film\+\_\+importer}]{\setlength{\rightskip}{0pt plus 5cm}film\+\_\+importer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a6663fba813a44adbada0c8b08eb8c328}
+This function import film names and number of films from .dat file named D\+A\+T\+A\+B\+A\+S\+E.\+D\+A\+T \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a9c28ab6d188de541ba834a20c87f5cf3}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Film\+Chooser@{Film\+Chooser}}
+\index{Film\+Chooser@{Film\+Chooser}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Film\+Chooser}]{\setlength{\rightskip}{0pt plus 5cm}int Film\+Chooser (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a9c28ab6d188de541ba834a20c87f5cf3}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a1d54062b70b08f8a9d208a3a4a81917a}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Film\+Name\+With\+Blanks@{Film\+Name\+With\+Blanks}}
+\index{Film\+Name\+With\+Blanks@{Film\+Name\+With\+Blanks}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Film\+Name\+With\+Blanks}]{\setlength{\rightskip}{0pt plus 5cm}Film\+Name\+With\+Blanks (
+\begin{DoxyParamCaption}
+\item[{T\+C\+H\+A\+R}]{film\mbox{[}100\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a1d54062b70b08f8a9d208a3a4a81917a}
+
+\begin{DoxyParams}{Parameters}
+{\em film\mbox{[}100\mbox{]}} & contains film to be converted This function is used to convert a film name\textquotesingle{}s consonants into blanks for the player to guess it \\
+\hline
+\end{DoxyParams}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a6b823f257026b7014379a568a9ee0674}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Game\+Controler@{Game\+Controler}}
+\index{Game\+Controler@{Game\+Controler}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Game\+Controler}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Controler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a6b823f257026b7014379a568a9ee0674}
+It control the core of game like calling diffrent functions to reset data or getting to result screen \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a5f77d4e3e5569ff9d236463fd80ebe28}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Init\+Instance@{Init\+Instance}}
+\index{Init\+Instance@{Init\+Instance}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Init\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L Init\+Instance (
+\begin{DoxyParamCaption}
+\item[{H\+I\+N\+S\+T\+A\+N\+C\+E}]{h\+Instance, }
+\item[{int}]{n\+Cmd\+Show}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a5f77d4e3e5569ff9d236463fd80ebe28}
+Saves instance handle and creates main window. In this function, we save the instance handle in a global variable and create and display the main program window. \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_aa0d0c9beb94350f8eac8fc4026a65375}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!My\+Register\+Class@{My\+Register\+Class}}
+\index{My\+Register\+Class@{My\+Register\+Class}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{My\+Register\+Class}]{\setlength{\rightskip}{0pt plus 5cm}A\+T\+O\+M My\+Register\+Class (
+\begin{DoxyParamCaption}
+\item[{H\+I\+N\+S\+T\+A\+N\+C\+E}]{h\+Instance}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_aa0d0c9beb94350f8eac8fc4026a65375}
+Registers the window class. \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a09671f5a4fceb7869c61603ea361260f}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!New\+Game@{New\+Game}}
+\index{New\+Game@{New\+Game}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{New\+Game}]{\setlength{\rightskip}{0pt plus 5cm}I\+N\+T\+\_\+\+P\+T\+R C\+A\+L\+L\+B\+A\+C\+K New\+Game (
+\begin{DoxyParamCaption}
+\item[{H\+W\+N\+D}]{h\+Nw\+Gm, }
+\item[{U\+I\+N\+T}]{message, }
+\item[{W\+P\+A\+R\+A\+M}]{w\+Param, }
+\item[{L\+P\+A\+R\+A\+M}]{l\+Param}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a09671f5a4fceb7869c61603ea361260f}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a1580b4205b99ef1d084d5592befc9b81}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Total\+Effective\+Films@{Total\+Effective\+Films}}
+\index{Total\+Effective\+Films@{Total\+Effective\+Films}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Total\+Effective\+Films}]{\setlength{\rightskip}{0pt plus 5cm}Total\+Effective\+Films (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a1580b4205b99ef1d084d5592befc9b81}
+This funtion find out the total effective films after sorting according to genre \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a9135ea2a0d6fce68ba3b858226a31a4f}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Wnd\+Proc@{Wnd\+Proc}}
+\index{Wnd\+Proc@{Wnd\+Proc}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Wnd\+Proc}]{\setlength{\rightskip}{0pt plus 5cm}L\+R\+E\+S\+U\+L\+T C\+A\+L\+L\+B\+A\+C\+K Wnd\+Proc (
+\begin{DoxyParamCaption}
+\item[{H\+W\+N\+D}]{h\+Wnd, }
+\item[{U\+I\+N\+T}]{message, }
+\item[{W\+P\+A\+R\+A\+M}]{w\+Param, }
+\item[{L\+P\+A\+R\+A\+M}]{l\+Param}
+\end{DoxyParamCaption}
+)}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a9135ea2a0d6fce68ba3b858226a31a4f}
+Processes messages for the main window. It is the heart of the programe, process all the inputs from user as well as internal inputs W\+M\+\_\+\+C\+O\+M\+M\+A\+N\+D -\/ process the application menu W\+M\+\_\+\+P\+A\+I\+N\+T -\/ Paint the main window W\+M\+\_\+\+D\+E\+S\+T\+R\+O\+Y -\/ post a quit message and return 
+
+\subsection{Variable Documentation}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ad093fa3d7a856a0f74bbf603202402d1}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!B\+G\+Music@{B\+G\+Music}}
+\index{B\+G\+Music@{B\+G\+Music}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{B\+G\+Music}]{\setlength{\rightskip}{0pt plus 5cm}H\+S\+T\+R\+E\+A\+M B\+G\+Music = N\+U\+L\+L}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ad093fa3d7a856a0f74bbf603202402d1}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a14e016f5b05bf5b31b6a5e34ebf14ddf}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!checker@{checker}}
+\index{checker@{checker}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{checker}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T checker\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a14e016f5b05bf5b31b6a5e34ebf14ddf}
+Stores already taken films \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_aa24733944d268c93321f9e5c0d7a1d0c}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Debug\+Mode@{Debug\+Mode}}
+\index{Debug\+Mode@{Debug\+Mode}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Debug\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L Debug\+Mode = F\+A\+L\+S\+E}\label{_b_o_w-a_01film_01guessing_01game_8cpp_aa24733944d268c93321f9e5c0d7a1d0c}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a2343f912f77bd8c880abaf1f2c8ea4ce}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!f\+F\+X\+Level@{f\+F\+X\+Level}}
+\index{f\+F\+X\+Level@{f\+F\+X\+Level}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{f\+F\+X\+Level}]{\setlength{\rightskip}{0pt plus 5cm}double f\+F\+X\+Level =1.\+0}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a2343f912f77bd8c880abaf1f2c8ea4ce}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_abf7240438cea784c260c523f712efb7b}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!f\+Volume\+Level@{f\+Volume\+Level}}
+\index{f\+Volume\+Level@{f\+Volume\+Level}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{f\+Volume\+Level}]{\setlength{\rightskip}{0pt plus 5cm}double f\+Volume\+Level = 1.\+0}\label{_b_o_w-a_01film_01guessing_01game_8cpp_abf7240438cea784c260c523f712efb7b}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a30496839d082019937429867d2a7187b}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Game\+Mode@{Game\+Mode}}
+\index{Game\+Mode@{Game\+Mode}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Game\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T Game\+Mode}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a30496839d082019937429867d2a7187b}
+Stores wheter the game is Single Play or Multi\+Play \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ada08e0af48b69529004bed6d4f440da3}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Game\+Status@{Game\+Status}}
+\index{Game\+Status@{Game\+Status}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Game\+Status}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+\+Game\+Status} Game\+Status}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ada08e0af48b69529004bed6d4f440da3}
+Working \hyperlink{struct___game_status}{\+\_\+\+Game\+Status} structure object \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a3391e353e9dd078052293d5bce1f786c}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!gdiplus\+Startup\+Input@{gdiplus\+Startup\+Input}}
+\index{gdiplus\+Startup\+Input@{gdiplus\+Startup\+Input}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{gdiplus\+Startup\+Input}]{\setlength{\rightskip}{0pt plus 5cm}Gdiplus\+Startup\+Input gdiplus\+Startup\+Input}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a3391e353e9dd078052293d5bce1f786c}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_acdde03058563bb0178660fb650bc1b90}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!hang@{hang}}
+\index{hang@{hang}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{hang}]{\setlength{\rightskip}{0pt plus 5cm}H\+S\+T\+R\+E\+A\+M hang}\label{_b_o_w-a_01film_01guessing_01game_8cpp_acdde03058563bb0178660fb650bc1b90}
+Hang sound stream \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a44f41244c97693b2fbd5244bcb1e86ec}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!h\+Inst@{h\+Inst}}
+\index{h\+Inst@{h\+Inst}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{h\+Inst}]{\setlength{\rightskip}{0pt plus 5cm}H\+I\+N\+S\+T\+A\+N\+C\+E h\+Inst}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a44f41244c97693b2fbd5244bcb1e86ec}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a367defee513037600b01dd575f342e51}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!i\+Bow\+Life\+Counter@{i\+Bow\+Life\+Counter}}
+\index{i\+Bow\+Life\+Counter@{i\+Bow\+Life\+Counter}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{i\+Bow\+Life\+Counter}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T i\+Bow\+Life\+Counter}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a367defee513037600b01dd575f342e51}
+Count keeper for how many lives are over \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a5648a01db7fef763491b4201c024c633}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!i\+Display\+Code@{i\+Display\+Code}}
+\index{i\+Display\+Code@{i\+Display\+Code}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{i\+Display\+Code}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T i\+Display\+Code}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a5648a01db7fef763491b4201c024c633}
+Stores wheter the game is playing, pause or anything else. \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ab0a07588b9b285d7bbf9a93552a9309e}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!i\+Film\+Number\+Choosen@{i\+Film\+Number\+Choosen}}
+\index{i\+Film\+Number\+Choosen@{i\+Film\+Number\+Choosen}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{i\+Film\+Number\+Choosen}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T i\+Film\+Number\+Choosen}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ab0a07588b9b285d7bbf9a93552a9309e}
+Contains film choosen for current game. \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a05dd3dfc153be3477d3fb9560f5283d6}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!i\+F\+X\+Level@{i\+F\+X\+Level}}
+\index{i\+F\+X\+Level@{i\+F\+X\+Level}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{i\+F\+X\+Level}]{\setlength{\rightskip}{0pt plus 5cm}int i\+F\+X\+Level = 120}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a05dd3dfc153be3477d3fb9560f5283d6}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_adabd6149d4ae0439f2cca30177746b0c}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!i\+Menu\+Sound2@{i\+Menu\+Sound2}}
+\index{i\+Menu\+Sound2@{i\+Menu\+Sound2}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{i\+Menu\+Sound2}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T i\+Menu\+Sound2 =0}\label{_b_o_w-a_01film_01guessing_01game_8cpp_adabd6149d4ae0439f2cca30177746b0c}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_aa0a3891a9b50affabc7596c660bb26a9}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!i\+Menu\+Sound3@{i\+Menu\+Sound3}}
+\index{i\+Menu\+Sound3@{i\+Menu\+Sound3}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{i\+Menu\+Sound3}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T i\+Menu\+Sound3 =0}\label{_b_o_w-a_01film_01guessing_01game_8cpp_aa0a3891a9b50affabc7596c660bb26a9}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_af1c05f398b0659e822fd85b72d4915be}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!initiali@{initiali}}
+\index{initiali@{initiali}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{initiali}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T initiali = 0}\label{_b_o_w-a_01film_01guessing_01game_8cpp_af1c05f398b0659e822fd85b72d4915be}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a82d7703b8813bfd2a29818c91e75b100}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Invalidat@{Invalidat}}
+\index{Invalidat@{Invalidat}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Invalidat}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T Invalidat}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a82d7703b8813bfd2a29818c91e75b100}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a73cf9225cccfb40d7c795a7edaa0887a}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!i\+Quotes\+Code@{i\+Quotes\+Code}}
+\index{i\+Quotes\+Code@{i\+Quotes\+Code}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{i\+Quotes\+Code}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T i\+Quotes\+Code}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a73cf9225cccfb40d7c795a7edaa0887a}
+Stores which quote to show \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a2fc578768f4bc136312d3d154752668f}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!i\+Screen@{i\+Screen}}
+\index{i\+Screen@{i\+Screen}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{i\+Screen}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T i\+Screen = {\bf S\+C\+R\+E\+E\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a2fc578768f4bc136312d3d154752668f}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ab4773708eb66f5571e5be7c1ca60e18f}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Is\+Dialog\+Ok@{Is\+Dialog\+Ok}}
+\index{Is\+Dialog\+Ok@{Is\+Dialog\+Ok}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Is\+Dialog\+Ok}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L Is\+Dialog\+Ok = F\+A\+L\+S\+E}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ab4773708eb66f5571e5be7c1ca60e18f}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ae85a7c952565937ee7e9df5d0507fd33}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!i\+Volume\+Level@{i\+Volume\+Level}}
+\index{i\+Volume\+Level@{i\+Volume\+Level}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{i\+Volume\+Level}]{\setlength{\rightskip}{0pt plus 5cm}int i\+Volume\+Level =120}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ae85a7c952565937ee7e9df5d0507fd33}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a5395e1d056409332f992a2be60057f52}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Key\+Strokes\+Saver@{Key\+Strokes\+Saver}}
+\index{Key\+Strokes\+Saver@{Key\+Strokes\+Saver}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Key\+Strokes\+Saver}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R Key\+Strokes\+Saver\mbox{[}50\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a5395e1d056409332f992a2be60057f52}
+Save the keystrokes inputed by keyboard during gameplay. \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_af12b122c239334cdcd9d6922bad12862}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!m\+\_\+gdiplus\+Token@{m\+\_\+gdiplus\+Token}}
+\index{m\+\_\+gdiplus\+Token@{m\+\_\+gdiplus\+Token}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{m\+\_\+gdiplus\+Token}]{\setlength{\rightskip}{0pt plus 5cm}U\+L\+O\+N\+G\+\_\+\+P\+T\+R m\+\_\+gdiplus\+Token}\label{_b_o_w-a_01film_01guessing_01game_8cpp_af12b122c239334cdcd9d6922bad12862}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!M\+A\+X\+\_\+\+F\+I\+L\+M\+S@{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}}
+\index{M\+A\+X\+\_\+\+F\+I\+L\+M\+S@{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{M\+A\+X\+\_\+\+F\+I\+L\+M\+S}]{\setlength{\rightskip}{0pt plus 5cm}const U\+I\+N\+T M\+A\+X\+\_\+\+F\+I\+L\+M\+S = 2000}\label{_b_o_w-a_01film_01guessing_01game_8cpp_aa31048f49d109f6551271267f3470d11}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a3aad5b2acd91d72c754f0b79d8b13d16}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Max\+Play@{Max\+Play}}
+\index{Max\+Play@{Max\+Play}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Max\+Play}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T Max\+Play}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a3aad5b2acd91d72c754f0b79d8b13d16}
+Stores the max gameplays \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a3262b00c8915b649e2577ff5c37c9f86}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Menu\+Click@{Menu\+Click}}
+\index{Menu\+Click@{Menu\+Click}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Menu\+Click}]{\setlength{\rightskip}{0pt plus 5cm}H\+S\+T\+R\+E\+A\+M Menu\+Click}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a3262b00c8915b649e2577ff5c37c9f86}
+Menu\+Click sound stream \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ad452c12766db219c3783b0996eeaa4b5}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Mouse\+Position@{Mouse\+Position}}
+\index{Mouse\+Position@{Mouse\+Position}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Mouse\+Position}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+mousepos} Mouse\+Position}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ad452c12766db219c3783b0996eeaa4b5}
+working object of \hyperlink{struct__mousepos}{\+\_\+mousepos} \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a7c08b194baed7ff0320a51a91d26fe3a}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!one@{one}}
+\index{one@{one}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{one}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L one = F\+A\+L\+S\+E}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a7c08b194baed7ff0320a51a91d26fe3a}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a8a80a55aa6b2fc79b377b94981b09c07}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Per\+B\+G\+Bitmap@{Per\+B\+G\+Bitmap}}
+\index{Per\+B\+G\+Bitmap@{Per\+B\+G\+Bitmap}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Per\+B\+G\+Bitmap}]{\setlength{\rightskip}{0pt plus 5cm}H\+B\+I\+T\+M\+A\+P Per\+B\+G\+Bitmap}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a8a80a55aa6b2fc79b377b94981b09c07}
+Belong to G\+D\+I+ Belong to G\+D\+I+ \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a73a3f758934f64a1cc96332c726e31e5}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Per\+B\+G\+Hdc@{Per\+B\+G\+Hdc}}
+\index{Per\+B\+G\+Hdc@{Per\+B\+G\+Hdc}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Per\+B\+G\+Hdc}]{\setlength{\rightskip}{0pt plus 5cm}H\+D\+C Per\+B\+G\+Hdc}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a73a3f758934f64a1cc96332c726e31e5}
+Belong to G\+D\+I+ \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a4a97c77b5f6013b6bd9fc8ce9f47ffbb}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!player1@{player1}}
+\index{player1@{player1}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{player1}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+score} player1}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a4a97c77b5f6013b6bd9fc8ce9f47ffbb}
+score and hint storer for player1 \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a91fde0a0b415b1de76a040339624fcd0}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!player2@{player2}}
+\index{player2@{player2}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{player2}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+score}  player2}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a91fde0a0b415b1de76a040339624fcd0}
+score and hint storer for player2 \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a08dcb39799175d7c285e85f952c6cae0}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!quit@{quit}}
+\index{quit@{quit}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{quit}]{\setlength{\rightskip}{0pt plus 5cm}H\+S\+T\+R\+E\+A\+M quit}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a08dcb39799175d7c285e85f952c6cae0}
+For G\+D\+I+ Quit sound stream \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a34f4e61985cc9c9802de019181a92057}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Show\+Hint@{Show\+Hint}}
+\index{Show\+Hint@{Show\+Hint}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Show\+Hint}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L Show\+Hint = F\+A\+L\+S\+E}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a34f4e61985cc9c9802de019181a92057}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ab817d711a9f15bd907c455a2d29a06d7}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Sorted\+Data@{Sorted\+Data}}
+\index{Sorted\+Data@{Sorted\+Data}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Sorted\+Data}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+sorteddata} Sorted\+Data}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ab817d711a9f15bd907c455a2d29a06d7}
+Working object of \hyperlink{struct__sorteddata}{\+\_\+sorteddata} \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ad475b56f2055d00b3c693f6560c10e8e}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Static\+Text\+Handle@{Static\+Text\+Handle}}
+\index{Static\+Text\+Handle@{Static\+Text\+Handle}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Static\+Text\+Handle}]{\setlength{\rightskip}{0pt plus 5cm}H\+W\+N\+D Static\+Text\+Handle}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ad475b56f2055d00b3c693f6560c10e8e}
+the main window class name \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_aedf0cbc1060fead9a0a886a70839adc6}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Bollywood@{sz\+Bollywood}}
+\index{sz\+Bollywood@{sz\+Bollywood}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Bollywood}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Bollywood\mbox{[}11\mbox{]} = \{ L\char`\"{}B\+O\+L\+L\+Y\+W\+O\+O\+D\char`\"{} \}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_aedf0cbc1060fead9a0a886a70839adc6}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a0a386db4a3ed62a1602a49a18987223e}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Correctly\+Guessed\+Movie@{sz\+Correctly\+Guessed\+Movie}}
+\index{sz\+Correctly\+Guessed\+Movie@{sz\+Correctly\+Guessed\+Movie}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Correctly\+Guessed\+Movie}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Correctly\+Guessed\+Movie\mbox{[}6\mbox{]}\mbox{[}100\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a0a386db4a3ed62a1602a49a18987223e}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    L\textcolor{stringliteral}{"You got that"},
+    L\textcolor{stringliteral}{"Well nice guess"},
+    L\textcolor{stringliteral}{"Nice guessing Huhn!"},
+    L\textcolor{stringliteral}{"Well done!"},
+    L\textcolor{stringliteral}{"Hurrayh!"},
+    L\textcolor{stringliteral}{"You have made it"}
+\}
+\end{DoxyCode}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_abf59bae7e5868bcd8abffb3efd1c20e4}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Film\+Director@{sz\+Film\+Director}}
+\index{sz\+Film\+Director@{sz\+Film\+Director}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Film\+Director}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Film\+Director\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_abf59bae7e5868bcd8abffb3efd1c20e4}
+Stores director of all available films \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a01a6533181bdfc23246ee27b81676dd4}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Film\+Genre@{sz\+Film\+Genre}}
+\index{sz\+Film\+Genre@{sz\+Film\+Genre}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Film\+Genre}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Film\+Genre\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a01a6533181bdfc23246ee27b81676dd4}
+Stores genre of all available films \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ac8e67acaa1ef598ab55e5690b5fc4e4a}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Film\+Imdb\+Links@{sz\+Film\+Imdb\+Links}}
+\index{sz\+Film\+Imdb\+Links@{sz\+Film\+Imdb\+Links}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Film\+Imdb\+Links}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Film\+Imdb\+Links\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ac8e67acaa1ef598ab55e5690b5fc4e4a}
+Stores imdb links of films if available or N\+A if not \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ae1f4d278947a20ab67e1c5d1eca21018}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Film\+Main\+Cast@{sz\+Film\+Main\+Cast}}
+\index{sz\+Film\+Main\+Cast@{sz\+Film\+Main\+Cast}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Film\+Main\+Cast}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Film\+Main\+Cast\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ae1f4d278947a20ab67e1c5d1eca21018}
+Stores the main cast of films available. \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a85e5959c4bc22d8f1f1633372b67e1ba}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Film\+Names@{sz\+Film\+Names}}
+\index{sz\+Film\+Names@{sz\+Film\+Names}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Film\+Names}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Film\+Names\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}50\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a85e5959c4bc22d8f1f1633372b67e1ba}
+Stores all the films names available. \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a02f5aa7ae1dd7f88cc51f45b5ce4007c}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Film\+Release\+Date@{sz\+Film\+Release\+Date}}
+\index{sz\+Film\+Release\+Date@{sz\+Film\+Release\+Date}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Film\+Release\+Date}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Film\+Release\+Date\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}10\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a02f5aa7ae1dd7f88cc51f45b5ce4007c}
+Stores realease date of all the films available. \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_afd00366e1d43294ba013715e9b42874d}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Film\+Wiki\+Links@{sz\+Film\+Wiki\+Links}}
+\index{sz\+Film\+Wiki\+Links@{sz\+Film\+Wiki\+Links}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Film\+Wiki\+Links}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Film\+Wiki\+Links\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+M\+S}\mbox{]}\mbox{[}100\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_afd00366e1d43294ba013715e9b42874d}
+Stores wikipedia links of films if available or N\+A if not \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a11d6153ad375461db42b9361294baf70}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Film\+With\+Blanks@{sz\+Film\+With\+Blanks}}
+\index{sz\+Film\+With\+Blanks@{sz\+Film\+With\+Blanks}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Film\+With\+Blanks}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Film\+With\+Blanks\mbox{[}50\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a11d6153ad375461db42b9361294baf70}
+Holding for film names having blanks for filling \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a256db13e12f5162c4691b74f4f22b022}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+First\+Player\+Name@{sz\+First\+Player\+Name}}
+\index{sz\+First\+Player\+Name@{sz\+First\+Player\+Name}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+First\+Player\+Name}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+First\+Player\+Name\mbox{[}30\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a256db13e12f5162c4691b74f4f22b022}
+Stores Name of the first player. \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a405b15b25b866dd610f5c107ded83b8e}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Not\+Guessed\+The\+Movie@{sz\+Not\+Guessed\+The\+Movie}}
+\index{sz\+Not\+Guessed\+The\+Movie@{sz\+Not\+Guessed\+The\+Movie}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Not\+Guessed\+The\+Movie}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Not\+Guessed\+The\+Movie\mbox{[}6\mbox{]}\mbox{[}100\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a405b15b25b866dd610f5c107ded83b8e}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+        L\textcolor{stringliteral}{"Shame on you... Just Kidding"},
+        L\textcolor{stringliteral}{"You are not good in guessing"},
+        L\textcolor{stringliteral}{"Better guess next time"},
+        L\textcolor{stringliteral}{"Oh! you are unable to guess this movie"},
+        L\textcolor{stringliteral}{"Nah! Na! Na! Na! Nah! Looser. Don't take it seriously"},
+        L\textcolor{stringliteral}{"What are you doing! Concentrate"}
+\}
+\end{DoxyCode}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a41b8733f446795d8c7f235a56942fdde}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Second\+Player\+Name@{sz\+Second\+Player\+Name}}
+\index{sz\+Second\+Player\+Name@{sz\+Second\+Player\+Name}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Second\+Player\+Name}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Second\+Player\+Name\mbox{[}30\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a41b8733f446795d8c7f235a56942fdde}
+Stores the name of second player \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a0255997040d96a52f933b0c0d4bd8e01}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Title@{sz\+Title}}
+\index{sz\+Title@{sz\+Title}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Title}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Title\mbox{[}{\bf M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G}\mbox{]} = L\char`\"{}B\+O\+W -\/ a film guessing game\char`\"{}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a0255997040d96a52f933b0c0d4bd8e01}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_ac428b0bb455914397f2929cc9a3eb9e4}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Window\+Class@{sz\+Window\+Class}}
+\index{sz\+Window\+Class@{sz\+Window\+Class}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Window\+Class}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Window\+Class\mbox{[}{\bf M\+A\+X\+\_\+\+L\+O\+A\+D\+S\+T\+R\+I\+N\+G}\mbox{]} =L\char`\"{}Main\+Window\+Class\char`\"{}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_ac428b0bb455914397f2929cc9a3eb9e4}
+Stores the title of the program \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a8837e0ecc39b8b0f1aa81db475440cfc}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!sz\+Wrong\+Guess@{sz\+Wrong\+Guess}}
+\index{sz\+Wrong\+Guess@{sz\+Wrong\+Guess}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{sz\+Wrong\+Guess}]{\setlength{\rightskip}{0pt plus 5cm}T\+C\+H\+A\+R sz\+Wrong\+Guess\mbox{[}7\mbox{]}\mbox{[}100\mbox{]}}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a8837e0ecc39b8b0f1aa81db475440cfc}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{ L\textcolor{stringliteral}{"Bad Guessing"},
+L\textcolor{stringliteral}{"Use your brain not your finger tips"}
+L\textcolor{stringliteral}{"You are not good in guessing"},
+L\textcolor{stringliteral}{"Good luck next time"},
+L\textcolor{stringliteral}{"You have missed it"},
+L\textcolor{stringliteral}{"Oh! come on"},
+L\textcolor{stringliteral}{"Try again you ...."},
+\}
+\end{DoxyCode}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a4df24c9cd183e9df90e2fc5a09e54aa6}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Temp\+B\+G\+Bitmap@{Temp\+B\+G\+Bitmap}}
+\index{Temp\+B\+G\+Bitmap@{Temp\+B\+G\+Bitmap}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Temp\+B\+G\+Bitmap}]{\setlength{\rightskip}{0pt plus 5cm}H\+B\+I\+T\+M\+A\+P Temp\+B\+G\+Bitmap}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a4df24c9cd183e9df90e2fc5a09e54aa6}
+Belong to G\+D\+I+ \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a4be9a5a1cac801777358d2c0e3f90830}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!Temp\+B\+G\+Hdc@{Temp\+B\+G\+Hdc}}
+\index{Temp\+B\+G\+Hdc@{Temp\+B\+G\+Hdc}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{Temp\+B\+G\+Hdc}]{\setlength{\rightskip}{0pt plus 5cm}H\+D\+C Temp\+B\+G\+Hdc}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a4be9a5a1cac801777358d2c0e3f90830}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_acaa93e2bd2a424cfc45e2a7c95a74d95}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!total\+\_\+films@{total\+\_\+films}}
+\index{total\+\_\+films@{total\+\_\+films}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{total\+\_\+films}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T total\+\_\+films = 0}\label{_b_o_w-a_01film_01guessing_01game_8cpp_acaa93e2bd2a424cfc45e2a7c95a74d95}
+\hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a93cad2fb0e5395146ea60cfd24de90bf}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!uhuh@{uhuh}}
+\index{uhuh@{uhuh}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{uhuh}]{\setlength{\rightskip}{0pt plus 5cm}H\+S\+T\+R\+E\+A\+M uhuh}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a93cad2fb0e5395146ea60cfd24de90bf}
+uhuh sound stream \hypertarget{_b_o_w-a_01film_01guessing_01game_8cpp_a3ac190655e22c3f8fb5c499134d11c13}{}\index{B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}!yeah@{yeah}}
+\index{yeah@{yeah}!B\+O\+W-\/a film guessing game.\+cpp@{B\+O\+W-\/a film guessing game.\+cpp}}
+\subsubsection[{yeah}]{\setlength{\rightskip}{0pt plus 5cm}H\+S\+T\+R\+E\+A\+M yeah}\label{_b_o_w-a_01film_01guessing_01game_8cpp_a3ac190655e22c3f8fb5c499134d11c13}
+Yeah sound stream 
